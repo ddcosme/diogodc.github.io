@@ -3,26 +3,33 @@
 <head>
   
 <style>
-  div.foto{  }
-  div.foto:hover {width: 40%; height: 100px;}  
+
+  #foto{ 
+      background-image: url(http://images.christianpost.com/portugues/middle/53716/piramides-do-egito.jpg);
+    width: 350px;
+    height: 250px;
+    background-size: 350px 250px;
+    background-repeat: no-repeat;
+  }
+    
+#foto:hover {    transform: rotateY(180deg);  }    
+       
+  
 </style>
   
 </head>
 <body>
-  
-  <table style="width:100%">
-  <tr>
-    <td>
-      
-      <div class="foto"> <img   src="http://images.christianpost.com/portugues/middle/53716/piramides-do-egito.jpg" style="width:700px;height:400px" > 
-<div class="legenda"> Egito </div>
-      </div>
-      
-      </td>
-      </tr>
-  
-</table>
-  
 
+  <table width="1100" border="0"> 
+<tr>
+<td >
+<div id="foto">
+</div></br>Egito</br>
+</div>
+</td>
+
+</table>
+
+  
 </body>
 </html>
