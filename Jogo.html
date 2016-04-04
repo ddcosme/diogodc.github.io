@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jogo</title>
+	<style type="text/css">
+		canvas { border: 1px solid;	}
+	</style>
+</head>   
+<body bgcolor='silver' >
+<input type="button" name="iniciar" value="iniciar" onclick="inicio()">	
+
+	<center>
+	<canvas id="canvas" width="600" height="500">
+		não suporta.
+	</canvas>
+	</center>
+	<script type="text/javascript">
+
+	var alturajogador, laguraJogador, posicaoJogador, velocidadeJogador, pontosJogador;
+
+					
+//////////////////////////////////////////// 			
+function inicio() {
+	alturajogador = 15;
+	laguraJogador = 90;
+	
+	pontosJogador = 0;
+	posicaoJogador = (canvas.width - laguraJogador) / 2;
+	velocidadeJogador = 21;
+	
+	canvas = document.getElementById("canvas");
+	context = canvas.getContext("2d");				
+	
+	primeira = new bola()
+	bolas = new Array(primeira);
+	
+	document.addEventListener('keydown', keyDown);
+	
+	setInterval(loopJogo, 30);  //intervalo de repeticao
+
+}  //end inicio()
+
+
+//////////////////////////////////////////// 		
+function bola() {
+	var randomico = Math.round(Math.random() * (3 - 1) + 1) - 1;
+    this.tamanhoBola = 7;
+	this.pontos = 1;
+	
+    this.posicaoXbola = Math.random() * 600;
+    this.posicaoYbola = -10;
+    this.velocidadeBola = Math.random() * (10 - 6) + 6;
+	this.colisao = false;
+}  // end bola()
+
+
+//////////////////////////////////////////// 			
+function keyDown(e) 
+{
+		if(e.keyCode == 37) {
+			if(posicaoJogador > 0) {
+				posicaoJogador -= velocidadeJogador;
+			}
+		}
+		
+		if(e.keyCode == 39){
+			if(posicaoJogador < (canvas.width - laguraJogador))	{
+				posicaoJogador += velocidadeJogador;
+			}
+		}
+} //end KeyDown
+
+			
+//////////////////////////////////////////// 
+function loopJogo() {
+		context.clearRect(0, 0, canvas.width, canvas.height); //Limpa Tela
+
+		if(bolas.length <= 0) {
+		   bolas.push(new bola()); 
+		} // Checar bolas
+
+		bolas.forEach(function(b, randomico) {
+			context.beginPath();
+		    context.arc(b.posicaoXbola, b.posicaoYbola, b.tamanhoBola, 0, Math.PI * 2, true);
+		    context.fill();
+			
+			
+			if(b.posicaoYbola >= 50 && bolas.length <= 2) {
+				bolas.push(new bola());
+			}
+			
+			if(b.posicaoYbola <= canvas.height){
+				b.posicaoYbola += b.velocidadeBola;  
+			}
+			else{
+				bolas.splice(randomico, 1);
+			} // controle das bolas
+			
+			
+			if((b.posicaoXbola > posicaoJogador && b.posicaoXbola < posicaoJogador + laguraJogador) && b.posicaoYbola >= canvas.height - alturajogador && b.colisao == false) {
+				pontosJogador += b.pontos;
+				b.colisao = true;
+			} // if de Checar Colisão
+		});
+				
+		context.font = "30pt Arial"; // pontuacao
+		context.fillText(pontosJogador, canvas.width - 70, 50);
+						
+		context.fillRect(posicaoJogador, canvas.height - alturajogador, laguraJogador, alturajogador); //barra do jogador
+
+}  // end loopJogo
+			
+</script>
+
+ <br>
+Movimentação: setas para esquerda (<=) e para direita (=>) do teclado.
+
+
+
+
+</body>
+</html>
