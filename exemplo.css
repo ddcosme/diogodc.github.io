@@ -1,0 +1,80 @@
+.background {
+	width: 800px;
+	height: 600px;
+	display: inline-block;
+	position: absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	margin:auto;
+
+	border: 3px solid;
+}
+
+.options {
+	margin: 100 20 0 20;
+}
+.option {
+	display: table-cell;
+	width: 100px;
+	height: 100px;
+	border: 2px solid;
+
+	vertical-align:middle;
+	text-align:center
+}
+.option img{
+	max-width:100px;
+	max-height:100px;
+
+  position: relative;
+	z-index: -1; //source: https://css-tricks.com/vignetting-woes/
+}
+.space {
+	display: table-cell;
+	width: 120px;
+}
+
+.selected {
+	background: rgba(0,0,255,0.5);
+}
+
+.result {
+	margin: 50 300;
+	width: 200px;
+	height: 150px;
+	border: 2px solid;
+
+	display: flex; //source: http://stackoverflow.com/a/21375314/1269898
+}
+.result img{
+	max-width:200px;
+	max-height:150px;
+	margin: auto;
+}
+
+.score {
+	position: absolute;
+	bottom: 0;
+	width: 450px;
+	height: 100px;
+
+	border-style: solid;
+	border-width: 3px 3px 0px 0px;
+}
+.player {
+	display: table-cell;
+	width: 250px;
+	height: 100px;
+
+	text-align: center;
+	vertical-align: middle;
+	line-height: 100px;
+}
+
+img{
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none; //source: http://stackoverflow.com/a/6934151/1269898
+}
