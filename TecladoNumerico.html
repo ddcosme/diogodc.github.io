@@ -1,47 +1,48 @@
-    <!DOCTYPE html>
-    <html>
-    <CENTER>
-    <FORM NAME="teclado">
-    <TABLE BORDER=4 WIDTH="155" bgcolor="silver">
-    	<TR>
-    		<TD ALIGN="CENTER">
-    			<INPUT TYPE="text"  NAME="Input" SIZE="16">
-    		</TD>
-    	</TR>
-    	<TR>
-    		<TD ALIGN="CENTER">
-    			<INPUT TYPE="button" NAME="um"
-    			VALUE="  1  " onClick="teclado.Input.value += '1'">
-    			<INPUT TYPE="button" NAME="dois"
-    			VALUE="  2  " onClick="teclado.Input.value += '2'">
-    			<INPUT TYPE="button" NAME="tres"
-    			VALUE="  3  " onClick="teclado.Input.value += '3'">
-    			<INPUT TYPE="button" NAME="quarto"
-    			 VALUE="  4  " onClick="teclado.Input.value += '4'">
-    			 <INPUT TYPE="button" NAME="cinco"
-    			 VALUE="  5  " onClick="teclado.Input.value += '5'">
-    			 <INPUT TYPE="button" NAME="seis"
-    			 VALUE="  6  " onClick="teclado.Input.value += '6'">
-    			 <INPUT TYPE="button" NAME="sete"
-    			 VALUE="  7  " onClick="teclado.Input.value += '7'">
-    			 <INPUT TYPE="button" NAME="oito"
-    			 VALUE="  8  " onClick="teclado.Input.value += '8'">
-    			 <INPUT TYPE="button" NAME="nome"
-    			 VALUE="  9  " onClick="teclado.Input.value += '9'">
-    			 <INPUT TYPE="button" NAME="zero"
-    			 VALUE="  0  " onClick="teclado.Input.value += '0'">
-    			<INPUT TYPE="button" NAME="limpar"
-    			 VALUE=" limpar " onClick="teclado.Input.value = ''">    			 
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="exemplo.css">
+	<script src="exemplo.js"> 	</script>
+</head>
+<body>
+		<div class="options" style="color:blue">
+		<table bgcolor="blue" align="center">
+		<td>
+		<ti>
+		<FORM NAME="teclado">
+		<center> <INPUT TYPE="text"  NAME="Input" SIZE="30"> </center >	
+		</FORM>
+		<ti>
+		<td>
+		</table>
 
-    		</TD>
-    	</TR>
-    </TABLE>
+		<br>
+			<center>
+			<div id="clearr" class="option" onclick="limpar()"> <img src="images/c.png" alt="clear"></div>
+			<div id="t0" class="option" onclick="c0()"> <img src="images/0.png" alt="0"></div>
+			<br>
+			<div id="t1" class="option" onclick="c1()"> <img src="images/1.png" alt="1"></div>
+			<div id="t2" class="option" onclick="c2()"> <img src="images/2.png" alt="2"></div>
+			<div id="t3" class="option" onclick="c3()"> <img src="images/3.png" alt="3"></div>
+			<br>
+			<div id="t4" class="option" onclick="c4()"> <img src="images/4.png" alt="4"></div>
+			<div id="t5" class="option" onclick="c5()"> <img src="images/5.png" alt="5"></div>
+			<div id="t6" class="option" onclick="c6()"> <img src="images/6.png" alt="6"></div>
+			<br>
+			<div id="t7" class="option" onclick="c7()"> <img src="images/7.png" alt="7"></div>
+			<div id="t8" class="option" onclick="c8()"> <img src="images/8.png" alt="8"></div>
+			<div id="t9" class="option" onclick="c9()"> <img src="images/9.png" alt="9"></div>
+			
+			</center>
+					
+
+		</div>
+		
 
         <br>
         <br>
         <a href="index.html"> Voltar para a Index.</a>
-        
-
-    </FORM>
-    </CENTER>
-    </html>
+        		
+		
+	
+</body>
+</html>
