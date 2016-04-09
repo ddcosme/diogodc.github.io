@@ -24,17 +24,17 @@
 </script>
 
 
-<script>  // InicializaÃ§Ã£o,  marcaÃ§Ã£o e popup.
+<script>  // Inicialização,  marcação e popup.
 
 	var map = L.map('map');
 	var inicial = [-20.35594,-40.29895];  // inicio na UVV.
 	map.setView(inicial,15);
+    var marcador = L.marker(inicial,{draggable:true, riseOnHover:true} );
 
-    var marcador = L.marker(inicial,{draggable:true} );
+
+
     marcador.addTo(map);
-
 	var quadriLatLng = [
-            [-20.351958, -40.298054],
             [-20.350178, -40.298376],
             [-20.353447, -40.296101],
             [-20.354423, -40.297313],
@@ -42,31 +42,55 @@
     var pShopVV = L.polygon(quadriLatLng)  ;
     pShopVV.addTo(map);
 	var popupShopVV = L.popup().setContent('<img src="images/ShippingVV.jpg" width="250" height=175"><br><b>Shopping Vila Velha</b>');
-	pShopVV.bindPopup(popupShopVV);
+	//pShopVV.bindPopup(popupShopVV);
 	
+	//alert( quadriLatLng[1]);
+	//alert( marcador.getLatLng()  );
 	    
 		
 	var camadaDeImagem = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png');
 	camadaDeImagem.addTo(map);
-
 	var pUvv = [[-20.35594,-40.29895],[-20.35544,-40.29823],[-20.35379,-40.29825],[-20.35279,-40.2989],[-20.35382,-40.3003]];
 	var ponto1 = L.polygon(pUvv,{color:'red', weight:5}); 
 	ponto1.addTo(map);
 	var popup1 = L.popup().setContent('<img src="images/uvvPortaria.jpg" width="250" height=175"><br><b>UVV</b>');
-	ponto1.bindPopup(popup1);
+	//ponto1.bindPopup(popup1);
+	
+	// calculcar o quadrado
+	// depois comparar se NÃO está sendo do quardrado.
+	// evento do marcador.
 
 
-marcador.on('mouseout', function(e) {
-  var popup = L.popup()
-   .setLatLng(e.latlng) 
-   .setContent('<img src="images/ShippingVV.jpg" width="250" height=175"><br><b>Shopping Vila Velha</b>')
-   .openOn(map);
-});
+	 marcador.on("dragend",function(ev){
+	            var chagedPos = ev.target.getLatLng();
+	            this.bindPopup( '<img src="images/ShippingVV.jpg" width="250" height=175"><br><b>Shopping Vila Velha</b>'  ).openPopup();
+
+		
+	}); // end marcador.on
+    
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
 </script>
 
 
