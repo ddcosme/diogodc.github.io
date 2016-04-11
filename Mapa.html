@@ -24,15 +24,11 @@
 </script>
 
 
-<script>  // Inicialização,  marcação e popup.
-
+<script>  // InicializaÃ§Ã£o,  marcaÃ§Ã£o e popup.
 	var map = L.map('map');
 	var inicial = [-20.35594,-40.29895];  // inicio na UVV.
 	map.setView(inicial,15);
     var marcador = L.marker(inicial,{draggable:true, riseOnHover:true} );
-
-
-
     marcador.addTo(map);
 	var quadriLatLng = [
             [-20.350178, -40.298376],
@@ -42,54 +38,35 @@
     var pShopVV = L.polygon(quadriLatLng)  ;
     pShopVV.addTo(map);
 	var popupShopVV = L.popup().setContent('<img src="images/ShippingVV.jpg" width="250" height=175"><br><b>Shopping Vila Velha</b>');
-	//pShopVV.bindPopup(popupShopVV);
 	
 	//alert( quadriLatLng[1]);
 	//alert( marcador.getLatLng()  );
-	    
-		
+	   		
 	var camadaDeImagem = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png');
 	camadaDeImagem.addTo(map);
-	var pUvv = [[-20.35594,-40.29895],[-20.35544,-40.29823],[-20.35379,-40.29825],[-20.35279,-40.2989],[-20.35382,-40.3003]];
+	var pUvv = [[-20.35594,-40.29895], [-20.35492,-40.29776], [-20.35279,-40.2989], [-20.35382,-40.3003] ];
+	
 	var ponto1 = L.polygon(pUvv,{color:'red', weight:5}); 
 	ponto1.addTo(map);
 	var popup1 = L.popup().setContent('<img src="images/uvvPortaria.jpg" width="250" height=175"><br><b>UVV</b>');
-	//ponto1.bindPopup(popup1);
 	
-	// calculcar o quadrado
-	// depois comparar se NÃO está sendo do quardrado.
-	// evento do marcador.
-
-
 	 marcador.on("dragend",function(ev){
-	            var chagedPos = ev.target.getLatLng();
-	            this.bindPopup( '<img src="images/ShippingVV.jpg" width="250" height=175"><br><b>Shopping Vila Velha</b>'  ).openPopup();
-
+	            var chagedPoslat = ev.target.getLatLng().lat;
+				var chagedPoslng = ev.target.getLatLng().lng;
+				//alert(chagedPoslat);
+								                        
+	            if ( chagedPoslat < -20.351137 && chagedPoslat > -20.354423 && chagedPoslng > -40.299508 && chagedPoslng < -40.296101  )
+				{                     
+					this.bindPopup( '<img src="images/ShippingVV.jpg" width="250" height=175"><br><b>Shopping Vila Velha</b>'  ).openPopup();
+				} // if
 		
+				if ( chagedPoslat < -20.35279 && chagedPoslat > -20.35594 && chagedPoslng > -40.3003 && chagedPoslng < -40.29776  )
+				{                     
+					this.bindPopup( '<img src="images/uvvPortaria.jpg" width="250" height=175"><br><b>UVV</b>'  ).openPopup();
+				} // if2
+				
 	}); // end marcador.on
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 	
 </script>
 
